@@ -15,6 +15,7 @@ var uriDiagnotics = url.pathToFileURL(path.join(__dirname, '/public/diagnostics'
 console.log('uri diagnosticos');
 var uri = uriDiagnotics.href;
 console.log(uri);
+console.log("holas");
 
 var generateAcceptValue = function (acceptKey) {
     return crypto
