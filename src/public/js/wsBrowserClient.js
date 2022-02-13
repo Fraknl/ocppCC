@@ -1,5 +1,5 @@
 //const ws = new WebSocket('ws://localhost:3000/navegador');
-const ws = new WebSocket('ws://ocppcirc.herokuapp.com/navegador');
+const ws = new WebSocket('wss://ocppcirc.herokuapp.com/navegador');
 
 ws.addEventListener('open', () => {
     console.log('Conectado al servidor')
