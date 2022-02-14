@@ -8,14 +8,16 @@ var clientes = new Map();
 const ffs = require('./ocppFunctions');
 const ffsnav = require('./ocppFunctionsServer');
 const path = require('path');
+var os = require("os");
+var hostname = os.hostname();
 
-const url = require('url');
+//const url = require('url');
 //url.fileURLToPath(url)
-var uriDiagnotics = url.pathToFileURL(path.join(__dirname, '/public/diagnostics'));
+//var uriDiagnotics = url.pathToFileURL(path.join(__dirname, '/public/diagnostics/'));
+//var uriDiagnotics = 'ftp://192.168.222.201:3000/' + (path.join(__dirname, '/public/diagnostics/'));
+var uriDiagnotics = 'ftp://'+hostname+'/' + (path.join(__dirname, '/public/diagnostics/'));
 console.log('uri diagnosticos');
-var uri = uriDiagnotics.href;
-console.log(uri);
-console.log("holas");
+console.log(uriDiagnotics);
 
 var generateAcceptValue = function (acceptKey) {
     return crypto
@@ -201,7 +203,7 @@ module.exports = function(server){
                         console.log('Y el id de la estacion: ');
                         console.log(stationId);
                         var stationClient = clientes.get(stationId);
-                        PayloadRequest = {"location": uri.toString()};
+                        PayloadRequest = {"location": uriDiagnotics};
                         var OIBCS = [2, '10', message.tipo, PayloadRequest];
                         stationClient.write(funciones.constructReply(OIBCS, 0x1))
 
